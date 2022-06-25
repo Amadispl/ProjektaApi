@@ -11,7 +11,6 @@ namespace Projekt.Models
         public bool HasDelivery { get; set; }
         public string Email { get; set; }
         public string Number { get; set; }
-        public int AddressId { get; set; }
         [Required]
         [MaxLength(50)]
         public string City { get; set; }
