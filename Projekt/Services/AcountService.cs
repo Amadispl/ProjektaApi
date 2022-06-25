@@ -59,7 +59,7 @@ namespace Projekt.Services
             var user = new User()
             {
                 Email = dto.Email,
-                DateofBirth = dto.DateofBirth,
+                DateofBirth = DateTime.Parse(dto.DateofBirth.ToString()),
                 Nationality = dto.Nationality,
                 RoleId = dto.RoleId,
             };

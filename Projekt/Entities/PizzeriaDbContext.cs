@@ -4,7 +4,7 @@ namespace Projekt.Entities
 {
     public class PizzeriaDbContext : DbContext
     {
-        private readonly string connectionString = @"Server=DESKTOP-BHP44RA\SQLEXPRESS;Database=PizzeriaDataBase;Trusted_Connection=True;";
+        private readonly string connectionString = @"Server=LAPTOP-CRO8VTI7;Database=PizzeriaDataBase;Trusted_Connection=True;";
         public DbSet<Pizzeria> Pizzerias { get; set; }
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Menu> Menus { get; set; }

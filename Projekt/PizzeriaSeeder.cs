@@ -25,6 +25,12 @@ namespace Projekt
                     _context.Pizzerias.AddRange(pizzerias);
                     _context.SaveChanges();
                 }
+                if(!_context.Users.Any())
+                {
+                    var users = GetUsers();
+                    _context.Users.AddRange(users);
+                    _context.SaveChanges();
+                }
 
             }
         }
@@ -119,6 +125,46 @@ namespace Projekt
 
            };
             return roles;
+        }
+        private IEnumerable<User> GetUsers()
+        {
+            var users = new List<User>()
+            {
+                new User()
+                {
+                    Email="user@gmail.com",
+                    FirstName="user",
+                    LastName="user",
+                    PasswordHash="AQAAAAEAACcQAAAAEFQwkuLIeDy8IZyqn8A+VOLA2cd29/Yf1w19OL8TtU9kB2lw7ycimjmdoBia8eMVSg==",
+                    Nationality="Poland",
+                    DateofBirth=DateTime.Parse("2000-10-5"),
+                    RoleId=2
+
+                },
+                new User()
+                {
+                    Email="admin@gmail.com",
+                    FirstName="admin",
+                    LastName="admin",
+                    PasswordHash="AQAAAAEAACcQAAAAEFQwkuLIeDy8IZyqn8A+VOLA2cd29/Yf1w19OL8TtU9kB2lw7ycimjmdoBia8eMVSg==",
+                    Nationality="Poland",
+                    DateofBirth=DateTime.Parse("2000-11-6"),
+                    RoleId=1
+
+                },
+                new User()
+                {
+                    Email="manager@gmail.com",
+                    FirstName="manager",
+                    LastName="manager",
+                    PasswordHash="AQAAAAEAACcQAAAAEFQwkuLIeDy8IZyqn8A+VOLA2cd29/Yf1w19OL8TtU9kB2lw7ycimjmdoBia8eMVSg==",
+                    Nationality="Poland",
+                    DateofBirth=DateTime.Parse("2000-12-7"),
+                    RoleId=3
+
+                }
+            };
+            return users;
         }
     }
 }

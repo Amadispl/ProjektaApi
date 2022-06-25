@@ -14,6 +14,7 @@ using Projekt.Properties.Authorization;
 using Projekt.Services;
 using System.Reflection;
 using System.Text;
+using EasyNetQ;
 
 
 // Add services to the container.
