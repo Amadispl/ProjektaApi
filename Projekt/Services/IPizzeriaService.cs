@@ -5,10 +5,10 @@ namespace Projekt.Services
 {
     public interface IPizzeriaService
     {
-        int Create(CreatePizzeriaDto dto, int id);
-        IEnumerable<PizzeriaDto> GetAll();
+        int Create(CreatePizzeriaDto dto);
+        PageResult<PizzeriaDto> GetAll(PizzeriaQuery query);
         PizzeriaDto GetById(int id);
-        void DeleteById(int id, ClaimsPrincipal user);
-        void Edit(int id, UpdatePizzeriaDto dto, ClaimsPrincipal user);
+        void DeleteById(int id);
+        void Edit(int id, UpdatePizzeriaDto dto);
     }
 }

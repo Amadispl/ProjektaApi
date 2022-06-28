@@ -42,6 +42,8 @@ builder.Services.AddAuthentication(option =>
 builder.Services.AddAuthorization();
 builder.Services.AddDbContext<PizzeriaDbContext>();
 builder.Services.AddScoped<PizzeriaSeeder>();
+builder.Services.AddScoped < IValidator<PizzeriaQuery>, PizzeriaQueryValidator>();
+builder.Services.AddScoped<IUserContextService, UserContextService>();
 builder.Services.AddScoped<IPizzeriaService, PizzeriaService>();
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddSingleton(authenticationSetting);
@@ -49,6 +51,7 @@ builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.AddScoped<IAuthorizationHandler, OperationHandler>();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddSwaggerGen();

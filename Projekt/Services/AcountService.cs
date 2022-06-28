@@ -60,8 +60,7 @@ namespace Projekt.Services
             {
                 Email = dto.Email,
                 DateofBirth = DateTime.Parse(dto.DateofBirth.ToString()),
-                Nationality = dto.Nationality,
-                RoleId = dto.RoleId,
+                Nationality = dto.Nationality,               
             };
             user.PasswordHash = _hasher.HashPassword(user, dto.Password);
             _context.Users.Add(user);

@@ -18,10 +18,11 @@ namespace PizzeriaApi.Controllers
             _pizzeriaservice = pizzeriaService;
         }
         [HttpGet]
-        public ActionResult<IEnumerable<PizzeriaDto>> GetAll()
+        
+        public ActionResult<IEnumerable<PizzeriaDto>> GetAll([FromQuery]PizzeriaQuery query)
         {
 
-            return Ok(_pizzeriaservice.GetAll());
+            return Ok(_pizzeriaservice.GetAll(query));
         }
         [HttpGet("{id}")]
 
@@ -42,7 +43,7 @@ namespace PizzeriaApi.Controllers
         public ActionResult DeleteById([FromRoute] int id)
         {
 
-            _pizzeriaservice.DeleteById(id, User);
+            _pizzeriaservice.DeleteById(id);
 
             return Ok();
 
@@ -52,15 +53,15 @@ namespace PizzeriaApi.Controllers
         public ActionResult Create([FromBody] CreatePizzeriaDto dto)
         {
 
-            var userid = User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value;
-            var id = _pizzeriaservice.Create(dto, int.Parse(userid));
+           
+            var id = _pizzeriaservice.Create(dto);
             return Created($"api/pizzeria/{id}", null);
         }
         [HttpPut("{id}")]
         [Authorize(Roles = "Admin,Manager")]
         public ActionResult Edit([FromRoute] int id, [FromBody] UpdatePizzeriaDto dto)
         {
-            _pizzeriaservice.Edit(id, dto, User);
+            _pizzeriaservice.Edit(id, dto);
             return Ok();
         }
 
