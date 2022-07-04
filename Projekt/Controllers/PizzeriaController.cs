@@ -18,6 +18,7 @@ namespace PizzeriaApi.Controllers
             _pizzeriaservice = pizzeriaService;
         }
         [HttpGet]
+        [AllowAnonymous]
         public ActionResult<IEnumerable<PizzeriaDto>> GetAll()
         {
 
